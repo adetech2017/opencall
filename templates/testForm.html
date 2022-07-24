@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+{% load crispy_forms_tags%}
+
+{% block content %}
+
+
+    <!-- Header -->
+    <header class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1 class="text-center">TO OPEN CALL OUT FOR UNDERGRADUATE SCIENCE RESEARCH COMPETITION</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    
+    
+    <!-- Basic -->
+    <div class="ex-form-1 pt-2 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 offset-xl-3">
+                    <div class="toast-messages" id="main-toasts">
+                        {% for message in messages %}
+                            <div class="toast {{ message.tags }}" role="alert">
+                                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<strong>Ouch!</strong> {% endif %}
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% block toast_messages %}{% endblock toast_messages %}
+                    </div>
+                    <div class="text-box mt-5 mb-5">
+                        {% if contex.form_invalid %}
+                            <div class="alert-danger" role="alert">
+                                {{ context.form_invalid  }}
+                            </div>
+                        {% endif %}
+                        {% if submitted %}
+                            <p>Your application has been submitted successfully !</p>
+
+                            {% else %}
+                            <!-- Sign Up Form -->
+                            <form action="new-form" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{ form.first_name|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form.last_name|as_crispy_field }}
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        {{ form.matric_number|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form.phone_number|as_crispy_field }}
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        {{ form.email|as_crispy_field }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form.date_of_birth|as_crispy_field }}
+                                    </div>                                   
+                                </div>
+                                {{ form.aim_objective|as_crispy_field }}
+                                {{ form.school_name|as_crispy_field }}
+                                {{ form.school_address|as_crispy_field }}
+                                {{ form.school_id|as_crispy_field }}
+                                {{ form.photo|as_crispy_field }}
+                                {{ form.video_file|as_crispy_field }}
+                                {{ form.project_source|as_crispy_field }}
+                                {{ form.project_desc|as_crispy_field }}
+                                {{ form.project_benefit|as_crispy_field }}
+                                {{ form.desc|as_crispy_field }}
+                                {% comment %} {{ form|crispy}} {% endcomment %}
+                                <div class="mb-4 form-check">
+                                    
+                                </div>
+                                <button type="submit" class="form-control-submit-button">Submit</button>
+                            </form>
+                            <!-- end of sign up form -->
+                        {% endif %}
+                    </div> <!-- end of text-box -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of basic -->
+
+
+{% endblock content %}

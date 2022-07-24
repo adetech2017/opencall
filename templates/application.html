@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% static "images" as baseUrl %}
+
+{% block content %}
+
+
+    <!-- Header -->
+    <header class="ex-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 offset-xl-1">
+                    <h1 class="text-center">New Application</h1>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+            <div class="toast-messages" id="main-toasts">
+                {% for message in messages %}
+                    <div class="toast {{ message.tags }}" role="alert">
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<strong>Ouch!</strong> {% endif %}
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% block toast_messages %}{% endblock toast_messages %}
+            </div>
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+    
+    
+    <!-- Basic -->
+    <div class="ex-form-1 pt-2 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 offset-xl-3">
+                    <div class="text-box mt-5 mb-5">
+                        <!-- Sign Up Form -->
+                        <form action="crate-application" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-4 form-floating">
+                                <input type="text" class="form-control" id="floatingInput" name="f_name" {% if form.f_name.value != None %}value="{{ form.f_name.value|stringformat:'s' }}"{% endif %}
+                                maxlength="30"
+                                required>
+                                <label for="floatingInput">First Name</label>
+                            </div>
+                            <div class="mb-4 form-floating">
+                                <input type="text" class="form-control" id="floatingInput" name="l_name" placeholder="name@example.com">
+                                <label for="floatingInput">Last Name</label>
+                            </div>
+                            <div class="mb-4 form-floating">
+                                <input type="text" class="form-control" id="floatingInput" name="phone_number" placeholder="name@example.com">
+                                <label for="floatingInput">Phone Number</label>
+                            </div>
+                            <div class="mb-4 form-floating">
+                                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="mb-4 form-floating">
+                                <input type="text" class="form-control" id="floatingInput" name="school_name" placeholder="name@example.com">
+                                <label for="floatingInput">School Name</label>
+                            </div>
+                            <div class="mb-4 form-floating">              
+                                <textarea class="form-control" id="floatingInput" name="school_address"></textarea>
+                                <label for="floatingInput">School Address</label>
+                            </div>
+                            <div class="mb-4 form-floating">
+                                <textarea class="form-control" id="floatingInput" name="desc"></textarea>
+                                <label for="floatingPassword">About Yourself</label>
+                            </div>
+                            <div class="mb-4">
+                                <label>Upload School ID</label>
+                                <input type="file" name="school_id">
+                            </div>
+                            <div class="mb-4">
+                                <label>Upload Video</label>
+                                <input type="file" name="video_file">
+                            </div>
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">I agree with the site's stated <a href="/frontapp/privacy">Privacy Policy</a> and <a href="/frontapp/terms">Terms & Conditions</a></label>
+                            </div>
+                            <button type="submit" class="form-control-submit-button">Apply Now</button>
+                        </form>
+                        <!-- end of sign up form -->
+
+                    </div> <!-- end of text-box -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </div> <!-- end of ex-basic-1 -->
+    <!-- end of basic -->
+
+
+{% endblock content %}
