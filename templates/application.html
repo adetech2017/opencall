@@ -51,7 +51,8 @@
                                 <label for="floatingInput">Phone Number</label>
                             </div>
                             <div class="mb-4 form-floating">
-                                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                                <input type="email" class="form-control" id="floatingInput" name="email" value="{% if user.is_authenticated %}
+                                {{ user.email }}{% endif %}" readonly>
                                 <label for="floatingInput">Email address</label>
                             </div>
                             <div class="mb-4 form-floating">

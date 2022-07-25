@@ -10,8 +10,18 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="text-container">
+                        <h1 style="color:white">Lagos State Government</h1>
+                        <h5 style="color:white">Ministry of Science and Technology</h5>
                         <h1>Science & Technology Research: <span class="replace-me">A tool to sustainable economy</span></h1>
-                        <a class="btn-solid-lg mb-5" href="{% url 'frontapp:create-new-account' %}">Sign up for free</a>
+                        {% if user.is_authenticated %}
+                            <a class="btn-solid-lg mb-5" href="#">
+                                Welcome
+                            </a>
+                        {% else %}
+                            <a class="btn-solid-lg mb-5" href="{% url 'frontapp:create-new-account' %}">
+                                Sign up for free
+                            </a>
+                        {% endif %}
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
