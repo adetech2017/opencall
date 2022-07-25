@@ -36,22 +36,19 @@ def register(request):
         if password == confirmPassword:
             if User.objects.filter(username = username).exists():
                 messages.info(request, 'Username already exist')
-                #print('Username already exist')
                 return render(request, "sign-up.html")
                 
             elif User.objects.filter(email = email).exists():
                 messages.info(request, 'Email already exist')
-                #print('Email already exist')
                 return render(request, "sign-up.html")
                 
             elif len(password) < 8:
                 messages.info(request, 'Password is less than 8 chracter')
-                #print('Password is less than 8 chracter')
                 return render(request, "sign-up.html")
     
             else:
                 user = User.objects.create(email = email, username = username, password = password)
-                user.is_active = False
+                #user.is_active = False
                 user.save();
                 
                 # to get the domain of the current site  
