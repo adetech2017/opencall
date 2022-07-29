@@ -14,6 +14,8 @@ def newApplications(request):
 
 
 def newForm(request):
+    current_user = request.user
+    print (current_user.email)
     submitted = False
     
     if request.method == 'POST':
@@ -25,17 +27,17 @@ def newForm(request):
             
             if Application.objects.filter(email = email).exists():
                 messages.info(request, 'Email already exist')
-                return ('new-form', {'form':form})
+                return HttpResponseRedirect('new-form', {'form':form})
 
             elif Application.objects.filter(phone_number = phone_number).exists():
                 messages.info(request, 'Phone number already exist')
-                return redirect('new-form', {'form':form})
+                return HttpResponseRedirect('new-form', {'form':form})
         
             else:
             
                 form.save()
                 messages.success(request, 'Application submitted successfuly')
-                return ('new-form')
+                return HttpResponseRedirect('new-form', {'form':form})
                 #return HttpResponseRedirect('/new-form?submitted=True')
         
     else:
@@ -50,6 +52,8 @@ def newForm(request):
 
 
 def createApplication(request):
+    current_user = request.user
+    print (current_user.id)
     if request.method == 'POST':
 
         f_name = request.POST['f_name']
