@@ -1,3 +1,9 @@
-psycopg2
-Pillow
-django-crispy-forms
+asgiref==3.5.2
+dj-database-url==0.5.0
+Django==4.0.6
+django-crispy-forms==1.14.0
+django-utils-six==2.0
+Pillow==9.2.0
+psycopg2==2.9.3
+psycopg2-binary==2.9.3
+sqlparse==0.4.2
