@@ -10,6 +10,7 @@ from .forms import ApplicationForm
 
 def newApplications(request):
     return render(request, "application.html")
+    
 
 
 def newForm(request):

@@ -1,0 +1,1 @@
+web: gunicorn opencall.wsgi --log-file -
