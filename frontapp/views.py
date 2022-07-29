@@ -47,7 +47,7 @@ def register(request):
                 return render(request, "sign-up.html")
     
             else:
-                user = User.objects.create(email = email, username = username, password = password)
+                user = User.objects.create_user(email = email, username = username, password = password)
                 #user.is_active = False
                 user.save();
                 
