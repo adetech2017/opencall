@@ -37,7 +37,7 @@ def newForm(request):
             
                 form.save()
                 messages.success(request, 'Application submitted successfuly')
-                return HttpResponseRedirect('new-form', {'form':form})
+                return HttpResponseRedirect('new-form')
                 #return HttpResponseRedirect('/new-form?submitted=True')
         
     else:
