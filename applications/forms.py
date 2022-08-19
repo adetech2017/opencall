@@ -21,8 +21,8 @@ class ApplicationsForm(forms.ModelForm):
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'phone_number': 'Phone Number',
-            # 'matric_number': 'Matric Number',
-            # 'matric_number': 'Matric Number',
+            # 'photo': 'Upload passport photograph ',
+            # 'video_file': 'Upload project video ( max size 5mins)',
             # 'matric_number': 'Matric Number',
             # 'matric_number': 'Matric Number',
             # 'matric_number': 'Matric Number',
@@ -75,12 +75,12 @@ class ApplicationForm(ModelForm):
             'phone_number': 'Phone Number',
             'aim_objective': 'Project Aim / Objectives',
             'school_id': 'Upload school identity card',
-            'video_file': 'Upload project video',
-            'photo': 'Upload passport',
+            'video_file': 'Upload project video ( max size 5mins)',
+            'photo': 'Upload passport photograph',
             'project_source': 'Is material locally sourced? ',
-            'project_desc': 'Project Description',
+            'project_desc': 'Project Description (300 characters)',
             'project_benefit': 'Project Benefit',
-            'desc': 'Tell us about yourself ?'
+            'desc': 'Additional details (optional)'
         }
         
     
