@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'opencall.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'openCall_db',
         'USER': 'postgres',
         'PASSWORD': '145ju08',

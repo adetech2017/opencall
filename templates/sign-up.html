@@ -52,7 +52,7 @@
                             </div>
                             <div class="mb-4 form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">I agree with the site's stated <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a></label>
+                                <label class="form-check-label" for="exampleCheck1">I agree with the site's stated <a href="{% url 'frontapp:privacy' %}">Privacy Policy</a> and <a href="{% url 'frontapp:terms' %}">Terms & Conditions</a></label>
                             </div>
                             <button type="submit" class="form-control-submit-button">Sign up</button>
                         </form>
