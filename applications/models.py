@@ -11,7 +11,7 @@ CRITERIA = [
     # (3, 'Average'),
     # (2,'Poor'),
     # (1, 'Very poor')
-    (i) for i in range(101)
+    (i,i) for i in range(101)
 ]
 
 
