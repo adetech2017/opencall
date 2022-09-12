@@ -69,18 +69,21 @@ class ApplicationForm(ModelForm):
         }
         
         labels = {
-            'matric_number': 'Matric Number',
+            'last_name': 'Surname',
             'first_name': 'First Name',
-            'last_name': 'Last Name',
+            'matric_number': 'Matric Number',
             'phone_number': 'Phone Number',
             'aim_objective': 'Project Aim / Objectives',
-            'school_id': 'Upload school identity card',
+            'school_id': 'Institution ID',
             'video_file': 'Upload project video ( max size 5mins)',
             'photo': 'Upload passport photograph',
             'project_source': 'Is material locally sourced? ',
             'project_desc': 'Project Description (300 characters)',
             'project_benefit': 'Project Benefit',
-            'desc': 'Additional details (optional)'
+            'desc': 'Additional details (optional)',
+            'school_name': 'Name of the Higher Institution',
+            'school_address': 'Institution Address',
+            
         }
         
     

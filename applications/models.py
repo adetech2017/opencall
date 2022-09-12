@@ -5,13 +5,15 @@ from django.core.validators import FileExtensionValidator
 
 # Create your models here.
 
-CRITERIA = (
-    (5,'Excellent'),
-    (4,'Good'),
-    (3, 'Average'),
-    (2,'Poor'),
-    (1, 'Very poor')
-)
+CRITERIA = [
+    # (5,'Excellent'),
+    # (4,'Good'),
+    # (3, 'Average'),
+    # (2,'Poor'),
+    # (1, 'Very poor')
+    (i) for i in range(101)
+]
+
 
 class Application(models.Model):
     matric_number = models.CharField(max_length=15)
