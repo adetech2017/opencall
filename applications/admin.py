@@ -70,7 +70,7 @@ admin.site.register(Application, ApplicationAdmin)
 class CriteriaAdmin(admin.ModelAdmin):
     model = AssessmentCriteria
     extra = 1
-    list_display = ("applicant_name", "project_objective", "project_desc", "project_ingenuity", "project_source", "expected_benefit")
+    list_display = ("applicant_name", "project_objective", "project_desc", "project_ingenuity", "project_source", "expected_benefit", "total_score")
     editable_fields = ['project_objective', 'project_desc', 'project_ingenuity', 'project_source',
         'expected_benefit', 'presentation_skills', 'project_viability', 'sustainability', 'applicant_name']
     readonly_fields = []
