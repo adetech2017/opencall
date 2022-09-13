@@ -13,15 +13,7 @@
                         <h1 style="color:white">Lagos State Government</h1>
                         <h5 style="color:white">Ministry of Science and Technology</h5>
                         <h1>Science & Technology Research: <span class="replace-me">A tool to sustainable economy</span></h1>
-                        {% if user.is_authenticated %}
-                            <a class="btn-solid-lg mb-5" href="#">
-                                Welcome
-                            </a>
-                        {% else %}
-                            <a class="btn-solid-lg mb-5" href="{% url 'frontapp:create-new-account' %}">
-                                Sign up for free
-                            </a>
-                        {% endif %}
+                        
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-6">
@@ -37,13 +29,23 @@
     <div id="features" class="cards-1">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="h2-heading">SCIENCE RESEARCH COMPETITION AMONG UNDERGRADUATES IN INSTITUTIONS IN LAGOS STATE
+                <div class="col-lg-12 mt-1">
+                    <h2>SCIENCE RESEARCH COMPETITION AMONG UNDERGRADUATES IN INSTITUTIONS IN LAGOS STATE
                         INTRODUCTORY PAGE
                     </h2>
                     <p>The science and technology research competition themed: “science and technology; a tool to a sustainable economy” is open to undergraduates in science, engineering, and allied fields of higher institutions of learning in Lagos state.
                         The research projects are expected to resolve one or more challenges encountered in Lagos state. The research projects are expected to be maiden, unique, and made up of 100% local content.
-                        Applicants are to upload a 1 – 5 minute video presentation on their research project.</p>
+                        Applicants are to upload a 1 – 5 minute video presentation on their research project.
+                    </p>
+                    {% if user.is_authenticated %}
+                        <a class="btn-solid-lg mb-5" href="#">
+                            Welcome
+                        </a>
+                    {% else %}
+                        <a class="btn-solid-lg mb-5" href="{% url 'frontapp:create-new-account' %}">
+                            Sign up for free
+                        </a>
+                    {% endif %}
                 </div>
                 <div class="col-lg-12"> 
                     <h2 class="h2-heading"><u>Guidelines for Application</u></h2>
@@ -120,7 +122,7 @@
             <div class="row">
                 <div class="col-lg-6 col-xl-5">
                     <div class="text-container">
-                        <h2 class="display-4">
+                        <h2>
                             <i>INNOVATION WILL COME FROM A VARIETY OF WIDESPREAD INTELLIGENCE OF THE WORLD AND THE NUMBER OF INNOVATORS WE HAVE-Bill Gate</i>
                         </h2>
                         {% comment %} <p>Join the train to creatively transform Lagos State with your smart innovation.</p> {% endcomment %}
