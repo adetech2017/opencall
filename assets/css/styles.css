@@ -392,7 +392,7 @@ a:hover {
 .navbar .nav-item .nav-link {
 	padding-top: 0.625rem;
 	padding-bottom: 0.625rem;
-	color: #272556;
+	color: #ffffff; /*#272556*/
 	text-decoration: none;
 	transition: all 0.2s ease;
 }
