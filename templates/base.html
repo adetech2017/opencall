@@ -137,3 +137,105 @@
         <script src="{% static 'js/scripts.js' %}"></script> <!-- Custom scripts -->
     </body>
 </html>
+
+
+{% comment %} INSERT INTO users(
+    users_fn,
+    users_ln,
+    users_username,
+    users_password,
+    users_retp_password,
+    users_token,
+    users_email,
+    users_phone,
+    users_role_id,
+    users_dept_id,
+    users_type_id,
+    location_id,
+    users_activation,
+    users_images) 
+    VALUES 
+    (
+        'MAX',
+        'MAYOR',
+        'max',
+        'd487dd0b55dfcacdd920ccbdaeafa351',
+        'd487dd0b55dfcacdd920ccbdaeafa351',
+        ' ',
+        'max@biologix.com.ng',
+        '08125648442'
+        ,4,
+        6,
+        4,
+        1,
+        'ACTIVE',
+        ' ');
+
+
+        
+        http://206.189.7.238/phpmyadmin
+
+
+        sudo cp /etc/apache2/conf-available/phpmyadmin.conf /etc/apache2/conf-enabled
+        cp -r /usr/share/phpmyadmin /usr/share/nginx/
+
+        sudo cp /usr/share/nginx/phpmyadmin/config.sample.inc.php /usr/share/nginx/phpmyadmin/config.inc.php
+
+        
+        body: bookingList.isNotEmpty
+          ? ListView.builder(
+        itemCount: bookingList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            child: ListTile(
+              title: Text('${bookingList[index]['test']}',
+              style: const TextStyle(fontSize: 18.0),
+              ),
+              subtitle: Row(
+                children: [
+                  const Text(
+                    'Booking status: ',
+                    style: TextStyle(fontWeight: FontWeight.bold,
+                        fontSize: (16.0)
+                        //color: Colors.black
+                    ),
+                  ),
+                  // Text(
+                  //   'Pending',
+                  //   style: TextStyle(fontWeight: FontWeight.bold,
+                  //     color: (user_id == '1')? Colors.red : (user_id) == '2' ?Colors.blue : Colors.black,
+                  //   ),
+                  // ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      primary: bookingList[index]['booking_status'] == 'Pending' ? Colors.red : bookingList[index]['booking_status'] == 'Completed' ?Colors.green : Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      elevation: 5.0,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(1.0),
+                      child: Text(
+                        '${bookingList[index]['booking_status']}',
+                        style: const TextStyle(fontSize: 10),
+                      ),
+                    ),
+                  ),
+                ]
+              ),
+              trailing: Column(
+                children: [
+                  const Text('Booking Date',
+                    style: TextStyle(fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(height: 5),
+                  Text('${bookingList[index]['booking_date']}'),
+                ],
+              ),
+              isThreeLine: true,
+            ),
+          );
+        },
+      ) : const Center(child: Text('No Test Booking Found')), {% endcomment %}

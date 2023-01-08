@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'frontapp',
     'applications',
     'crispy_forms',
-    'whitenoise.runserver_nostatic'
+    'whitenoise.runserver_nostatic',
+    'import_export',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'crum.CurrentRequestUserMiddleware',
 ]
 
 ROOT_URLCONF = 'opencall.urls'

@@ -2,6 +2,12 @@ from email.mime import application
 from django.db import models
 from django.db.models import Sum
 from django.core.validators import FileExtensionValidator
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+from crum import get_current_user
+from django.contrib import messages
+from django.db.models import Count
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -28,6 +34,7 @@ class Application(models.Model):
     school_id = models.ImageField(upload_to='media/schoolIds')
     video_file = models.FileField(upload_to='media/applications', validators=[FileExtensionValidator(['mp4'])])
     photo = models.ImageField(upload_to='media/photos')
+    project_title = models.CharField(max_length=255, default="")
     project_source = models.CharField(max_length=10)
     desc = models.TextField()
     project_desc = models.TextField()
@@ -55,6 +62,7 @@ class AssessmentCriteria(models.Model):
     project_viability = models.IntegerField(choices = CRITERIA)
     sustainability = models.IntegerField(choices = CRITERIA) 
     total_score = models.IntegerField(default=0)
+    assessor = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     
@@ -62,14 +70,59 @@ class AssessmentCriteria(models.Model):
         db_table = "assessment_criteria"
         
     def save(self, *args, **kwargs):
-        self.total_score = self.project_objective + self.project_desc + self.project_ingenuity + self.project_source + self.expected_benefit + self.presentation_skills + self.project_viability + self.sustainability
+        applicant_id = self.applicant_name
+        pok = AssessmentCriteria.objects.filter(applicant_name=applicant_id).count()
+        print("Pok is", pok)
+        if pok > 3:
+            #raise ValidationError
+            #messages.add_message(messages.ERROR, "You can only have 3 assessment criteria")
+            return False
+        try:
+            self.total_score = self.project_objective + self.project_desc + self.project_ingenuity + self.project_source + self.expected_benefit + self.presentation_skills + self.project_viability + self.sustainability
+            
+            user = get_current_user()
+            self.assessor = user
+            
+            print("Hello World", self.assessor)
+            AssessmentCriteria.objects.filter(applicant_name_id=applicant_id, assessor=user).exists()
+        except AssessmentCriteria.DoesNotExist:
+            pass
         super(AssessmentCriteria, self).save(*args, **kwargs)
+
         
     def __str__(self):
         return f"{self.applicant_name}"
+    
+    
+    def __init__(self, *args, **kwargs):
+        super (AssessmentCriteria, self ).__init__(*args,**kwargs)
+        #self.assessor = UserAdmin.list_filter('Assessor')
+    
         
     # def __init__(self, *args, **kwargs):
     #     super(AssessmentCriteria).__init__(*args, **kwargs)
     #     self.total_score['total_score'].disabled = True
 
+
+class StudentAssessment(models.Model):
+    unique_id   = models.IntegerField(primary_key=True)
+    Fullname = models.CharField(max_length=255)
+    Institution = models.CharField(max_length=255)
+    PresentationSkills = models.IntegerField()
+    ExpectedBenefits = models.IntegerField()
+    ProjectDesc = models.IntegerField()
+    ProjectIngenuity = models.IntegerField()
+    ProjectViability = models.IntegerField()
+    Sustainability = models.IntegerField()
+    ProjectSource = models.IntegerField()
+    ProjectObjective = models.IntegerField()
+    TotalScore = models.IntegerField()
+    AverageScore = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = "student_assessment"
+    
+    def __str__(self):
+        return f"{self.Fullname} / {self.Institution}"
     
